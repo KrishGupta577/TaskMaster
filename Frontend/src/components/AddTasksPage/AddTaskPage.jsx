@@ -25,6 +25,8 @@ const AddTaskPage = ({ setShowAddTask }) => {
       return;
     }
 
+    console.log(new Date(`${data.dueDate}T12:00:00Z`).getTime())
+
     try {
       const response = await axios.post(url + '/task/add', { data }, { headers: { token } })
 

@@ -15,6 +15,8 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [showAddTask, setShowAddTask] = useState(false)
 
+  console.log(user.id)
+
   if (!isSignedIn) {
     navigate("/");
     return <p>Loading...</p>;

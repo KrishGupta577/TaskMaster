@@ -18,7 +18,7 @@ const connectDB = async () => {
 
 // 📝 Sample Tasks Data
 const sampleTasks = Array.from({ length: 10 }).map((_, index) => ({
-    userId: "user_2utO9sunQCGU7z05nX5jJmbevRV", // Replace with actual user ID
+    userId: "user_2uqhHpmth7Pno7136AStWrIs4UR", // Replace with actual user ID
     title: `Task ${index + 1}`,
     description: `This is task number ${index + 1}`,
     completed: index % 2 === 0, // Alternate between completed and not
@@ -31,7 +31,7 @@ const sampleTasks = Array.from({ length: 10 }).map((_, index) => ({
 const seedDatabase = async () => {
     await connectDB();
     try {
-        await TaskModel.deleteMany(); // Clear existing tasks
+        // await TaskModel.deleteMany(); // Clear existing tasks
         await TaskModel.insertMany(sampleTasks);
         console.log("✅ Seed Data Inserted Successfully");
         process.exit();

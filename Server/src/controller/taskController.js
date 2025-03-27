@@ -1,4 +1,6 @@
 import TaskModel from "../model/taskModel.js"
+import { scheduleMail } from "../utils/reminder.js";
+import { clerkClient } from '@clerk/express'
 
 // Helper function to reindex tasks after deletion
 async function reindexTasks(userId) {
@@ -46,6 +48,10 @@ const addtask = async (req, res) => {
             return res.json({ success: false, message: "Task cannot be empty." })
         }
 
+        const user = await clerkClient.users.getUser(userId);
+
+        const email = user.emailAddresses[0].emailAddress
+
         const newTask = new TaskModel({
             userId: userId,
             title: data.title,
@@ -54,6 +60,8 @@ const addtask = async (req, res) => {
         })
 
         const saveNewTask = await newTask.save()
+
+        scheduleMail(email, data.dueDate)
 
         if (!saveNewTask) {
             res.json({ success: false, message: "Error Occured in Adding task." })
@@ -128,7 +136,7 @@ const deleteTask = async (req, res) => {
 const reorder = async (req, res) => {
     try {
         const { draggedTaskId, targetTaskId } = req.body;
-        const { userId } = req.user; 
+        const { userId } = req.user;
 
         // Find both tasks
         const draggedTask = await TaskModel.findOne({ _id: draggedTaskId, userId });
