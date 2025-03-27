@@ -1,0 +1,59 @@
+.tasks-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 5px;
+    margin: 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s;
+}
+
+.task-item:hover {
+    background-color: rgba(205, 220, 57, 0.1);
+}
+
+.task-text {
+    flex-grow: 1;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.task-description{
+    font-size: 12px;
+}
+
+.task-item.task-completed .task-text {
+    text-decoration: line-through;
+    color: var(--secondary-text-color);
+}
+
+.task-actions {
+    display: flex;
+    align-items: center;
+}
+
+.task-delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.task-delete-btn:hover {
+    transform: scale(1.2);
+}
+
+.toggle-completed-btn{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 10px;
+}

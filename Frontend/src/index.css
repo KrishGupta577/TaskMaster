@@ -1,0 +1,56 @@
+:root {
+  --bg-color: #E8F5E9; /* Soft Mint Green */
+  --secondary-bg-color: #F9F9F9; /* Misty White */
+  --btn-color: #FFAB91; /* Warm Peach */
+  --btn-hover-color: #FF8A65; /* Soft Coral */
+  --border-color: #C5E1A5; /* Muted Green */
+  --border-hover-color: #AED581; /* Fresh Lime */
+  --box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+  --text-color: #37474F; /* Deep Charcoal */
+  --secondary-text-color: #8D9A8F; /* Subtle Olive */
+  --priority-high-color: #FF6B6B; /* Vibrant Red */
+  --priority-medium-color: #FFD93D; /* Bright Yellow */
+  --priority-low-color: #6BCD4F; /* Soft Green */
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.container {
+  background-color: var(--secondary-bg-color);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+button {
+  background-color: var(--btn-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, border 0.3s;
+}
+
+button:hover {
+  background-color: var(--btn-hover-color);
+}
+
+input, textarea {
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--border-hover-color);
+  outline: none;
+}
+
+.secondary-text {
+  color: var(--secondary-text-color);
+}
