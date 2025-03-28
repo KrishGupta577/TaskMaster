@@ -61,7 +61,9 @@ const addtask = async (req, res) => {
 
         const saveNewTask = await newTask.save()
 
-        scheduleMail(email, data.dueDate)
+        if (data.dueDate) {
+            scheduleMail(email, data.dueDate)
+        }
 
         if (!saveNewTask) {
             res.json({ success: false, message: "Error Occured in Adding task." })

@@ -7,6 +7,7 @@ export const StoreContext = createContext(null)
 const StoreContextProvider = (props) => {
 
   const { getToken } = useAuth()
+  const [colorTheme,setColorTheme] = useState('dark')
   const url = 'http://localhost:5000/api'
   const [tasks, setTasks] = useState([])
 
@@ -20,6 +21,7 @@ const StoreContextProvider = (props) => {
       const response = await axios.get(url + '/task/getAll', { headers: { token } })
       if (response.data.success) {
         setTasks(response.data.tasks)
+        console.log(response.data.tasks)
       }
       else {
         console.log(response.data.message)
@@ -39,6 +41,8 @@ const StoreContextProvider = (props) => {
     url,
     tasks,
     setTasks,
+    colorTheme,
+    setColorTheme,
     refreshTasks: () => { getAllTasks() }
   }
 

@@ -1,8 +1,8 @@
-import { UserButton, useUser } from "@clerk/clerk-react";
+import { SignedIn, UserButton, useUser } from "@clerk/clerk-react";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./Dashboard.css";
-import { Plus } from "lucide-react";
+import { Moon, Plus, Sun } from "lucide-react";
 import AddTaskPage from "../../components/AddTasksPage/addTaskPage";
 import { StoreContext } from "../../Context/StoreContext";
 import DisplayTasks from "../../components/DisplayTasks/DisplayTasks";
@@ -11,7 +11,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 const Dashboard = () => {
   const { isSignedIn, user } = useUser();
-  const { url } = useContext(StoreContext)
+  const { url, colorTheme, setColorTheme } = useContext(StoreContext)
   const navigate = useNavigate();
   const [showAddTask, setShowAddTask] = useState(false)
 
@@ -26,7 +26,15 @@ const Dashboard = () => {
     <div className="dashboard-wrapper">
       <div className="dashboard-header">
         <h1 className="dashboard-title">Welcome, {user?.firstName}!</h1>
-        <UserButton />
+        <UserButton >
+          <UserButton.MenuItems>
+            {colorTheme === 'light' ?
+              <UserButton.Action label="Dark Mode" labelIcon={<Moon size={20} />} onClick={() => { setColorTheme('dark') }} />
+              :
+              <UserButton.Action label="Light Mode" labelIcon={<Sun size={20} />} onClick={() => { setColorTheme('light') }} />
+            }
+          </UserButton.MenuItems>
+        </UserButton>
       </div>
       <DndProvider backend={HTML5Backend}>
         <div className="tasks-section">
@@ -40,6 +48,18 @@ const Dashboard = () => {
             {showAddTask && <AddTaskPage setShowAddTask={setShowAddTask} />}
 
             <DisplayTasks />
+
+            <Routes>
+              <Route
+                path='tasks'
+                element={
+                  <SignedIn>
+                    <DisplayTasks />
+                  </SignedIn>
+                }
+              >
+              </Route>
+            </Routes>
           </div>
         </div>
       </DndProvider>

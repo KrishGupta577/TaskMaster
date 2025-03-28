@@ -49,7 +49,7 @@ const AddTaskPage = ({ setShowAddTask }) => {
     <div className="task-page-container">
       <div className="task-card">
         <div className="add-task-header">
-          <h2 className="task-title">Create New Task</h2>\
+          <h2 className="task-title">Create New Task</h2>
           <X className='close-icon' size={24} onClick={() => { setShowAddTask(false) }} />
         </div>
 
@@ -88,12 +88,7 @@ const AddTaskPage = ({ setShowAddTask }) => {
               id="task-description"
               placeholder="Enter task description"
               className="task-input task-textarea"
-              {...register("description", {
-                maxLength: {
-                  value: 500,
-                  message: "Description cannot exceed 500 characters"
-                }
-              })}
+              {...register("description")}
             />
             {errors.description && (
               <span className="task-error">{errors.description.message}</span>
@@ -110,9 +105,7 @@ const AddTaskPage = ({ setShowAddTask }) => {
               id="task-dueDate"
               type="date"
               className="task-input"
-              {...register("dueDate", {
-                required: "Due date is required"
-              })}
+              {...register("dueDate")}
             />
             {errors.dueDate && (
               <span className="task-error">{errors.dueDate.message}</span>
@@ -128,9 +121,7 @@ const AddTaskPage = ({ setShowAddTask }) => {
             <select
               id="task-priority"
               className="task-input"
-              {...register("priority", {
-                required: "Priority is required"
-              })}
+              {...register("priority")}
             >
               <option value="">Select Priority</option>
               <option value="low">Low</option>

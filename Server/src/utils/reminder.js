@@ -2,8 +2,6 @@ import nodemailer from "nodemailer";
 
 export const scheduleMail = (email,targetDate) => {
 
-    console.log(targetDate)
-
     const auth = nodemailer.createTransport({
         service: "gmail",
         secure: true,

@@ -1,4 +1,4 @@
-import { ClerkExpressRequireAuth, verifyToken } from '@clerk/clerk-sdk-node';
+import { verifyToken } from '@clerk/clerk-sdk-node'
 
 const clerkAuth = async (req, res, next) => {
     try {

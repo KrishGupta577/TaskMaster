@@ -1,16 +1,53 @@
 :root {
-  --bg-color: #E8F5E9; /* Soft Mint Green */
-  --secondary-bg-color: #F9F9F9; /* Misty White */
-  --btn-color: #FFAB91; /* Warm Peach */
-  --btn-hover-color: #FF8A65; /* Soft Coral */
-  --border-color: #C5E1A5; /* Muted Green */
-  --border-hover-color: #AED581; /* Fresh Lime */
+  --bg-color: #E8F5E9;
+  /* Soft Mint Green */
+  --secondary-bg-color: #F9F9F9;
+  /* Misty White */
+  --btn-color: #FFAB91;
+  /* Warm Peach */
+  --btn-hover-color: #FF8A65;
+  /* Soft Coral */
+  --border-color: #C5E1A5;
+  /* Muted Green */
+  --border-hover-color: #AED581;
+  /* Fresh Lime */
   --box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
-  --text-color: #37474F; /* Deep Charcoal */
-  --secondary-text-color: #8D9A8F; /* Subtle Olive */
-  --priority-high-color: #FF6B6B; /* Vibrant Red */
-  --priority-medium-color: #FFD93D; /* Bright Yellow */
-  --priority-low-color: #6BCD4F; /* Soft Green */
+  --text-color: #37474F;
+  /* Deep Charcoal */
+  --secondary-text-color: #8D9A8F;
+  /* Subtle Olive */
+  --priority-high-color: #FF6B6B;
+  /* Vibrant Red */
+  --priority-medium-color: #FFD93D;
+  /* Bright Yellow */
+  --priority-low-color: #6BCD4F;
+  /* Soft Green */
+}
+
+[data-theme="dark"] {
+  --bg-color: #1E1E1E;
+  /* Deep Charcoal */
+  --secondary-bg-color: #2C2C2C;
+  /* Dark Gray */
+  --btn-color: #FF7043;
+  /* Warm Orange */
+  --btn-hover-color: #FF5722;
+  /* Deep Orange */
+  --border-color: #4CAF50;
+  /* Vibrant Green */
+  --border-hover-color: #66BB6A;
+  /* Fresh Green */
+  --box-shadow: rgba(255, 255, 255, 0.3) 0px 4px 6px;
+  --text-color: #ECEFF1;
+  /* Light Gray */
+  --secondary-text-color: #B0BEC5;
+  /* Muted Blue Gray */
+  --priority-high-color: #E53935;
+  /* Intense Red */
+  --priority-medium-color: #FBC02D;
+  /* Rich Yellow */
+  --priority-low-color: #7CB342;
+  /* Soft Green */
 }
 
 body {
@@ -40,13 +77,15 @@ button:hover {
   background-color: var(--btn-hover-color);
 }
 
-input, textarea {
+input,
+textarea {
   border: 1px solid var(--border-color);
   padding: 10px;
   border-radius: 5px;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   border-color: var(--border-hover-color);
   outline: none;
 }
