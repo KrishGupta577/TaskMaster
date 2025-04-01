@@ -23,10 +23,19 @@ const App = () => {
       <Routes>
         <Route path='/' element={<LandingPage />}></Route>
         <Route
-          path='/dashboard/*'
+          path='/dashboard'
           element={
             <SignedIn>
               <Dashboard />
+            </SignedIn>
+          }
+        >
+        </Route>
+        <Route
+          path='/insights'
+          element={
+            <SignedIn>
+              <InsightsPage />
             </SignedIn>
           }
         >

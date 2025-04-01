@@ -2,7 +2,7 @@ import { SignedIn, UserButton, useUser } from "@clerk/clerk-react";
 import { useContext, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./Dashboard.css";
-import { Moon, Plus, Sun } from "lucide-react";
+import { Activity, Moon, Plus, Sun } from "lucide-react";
 import AddTaskPage from "../../components/AddTasksPage/addTaskPage";
 import { StoreContext } from "../../Context/StoreContext";
 import DisplayTasks from "../../components/DisplayTasks/DisplayTasks";
@@ -33,6 +33,7 @@ const Dashboard = () => {
               :
               <UserButton.Action label="Light Mode" labelIcon={<Sun size={20} />} onClick={() => { setColorTheme('light') }} />
             }
+            <UserButton.Action label="Insights" labelIcon={<Activity size={20} />} onClick={() => { navigate('/insights') }} />
           </UserButton.MenuItems>
         </UserButton>
       </div>
