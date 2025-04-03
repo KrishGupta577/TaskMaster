@@ -7,14 +7,14 @@ export const StoreContext = createContext(null)
 const StoreContextProvider = (props) => {
 
   const { getToken } = useAuth()
-  const [colorTheme,setColorTheme] = useState('dark')
-  const url = 'http://localhost:5000/api'
+  const [colorTheme, setColorTheme] = useState('dark')
+  const url = 'https://taskmaster-yjpb.onrender.com/api'
   const [tasks, setTasks] = useState([])
 
 
   const getAllTasks = async () => {
     const token = await getToken()
-    if(!token){
+    if (!token) {
       return
     }
     try {
