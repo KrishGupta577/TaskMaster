@@ -63,8 +63,6 @@ const InsightsPage = () => {
 
   return (
     <div className="insights-page">
-      <h1>Todo List Insights</h1>
-      
       <div className="time-frame-selector">
         <label>Time Frame:</label>
         <select 

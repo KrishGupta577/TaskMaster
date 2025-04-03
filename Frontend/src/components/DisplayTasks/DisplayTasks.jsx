@@ -68,7 +68,7 @@ const DisplayTasks = () => {
             console.error("Error reordering tasks", error);
             // toast.error("Failed to reorder tasks");
         }
-    }, [url, refreshTasks]);
+    }, [url, refreshTasks, getToken]);
 
 
     if (tasks.length === 0) {
@@ -138,21 +138,38 @@ const DisplayTasks = () => {
     );
 };
 
-// 🏗️ Draggable Task Component
+// Modified DraggableTask Component
 const DraggableTask = ({ task, index, tasks, toggleTask, deletetask, moveTask, type }) => {
+    // State to track which task we're hovering over
+    const [hoveredTaskId, setHoveredTaskId] = useState(null);
+    
     const [{ isDragging }, drag] = useDrag({
         type: type,
         item: { task, index },
         collect: (monitor) => ({
             isDragging: monitor.isDragging(),
         }),
+        // Optional: When drag ends without a drop
+        end: (item, monitor) => {
+            if (!monitor.didDrop()) {
+                setHoveredTaskId(null);
+            }
+        }
     });
 
     const [, drop] = useDrop({
         accept: type,
-        hover: (draggedItem, monitor) => {
+        hover: (draggedItem) => {
+            // Just track which item we're hovering over, but don't make API calls
             if (draggedItem.task._id !== task._id) {
-                moveTask(draggedItem.task, task);
+                setHoveredTaskId(draggedItem.task._id);
+            }
+        },
+        drop: async (draggedItem) => {
+            // Only call the API when the item is actually dropped
+            if (draggedItem.task._id !== task._id) {
+                await moveTask(draggedItem.task, task);
+                setHoveredTaskId(null);
             }
         },
     });
@@ -160,7 +177,7 @@ const DraggableTask = ({ task, index, tasks, toggleTask, deletetask, moveTask, t
     return (
         <li
             ref={(node) => drag(drop(node))}
-            className={`task-item ${task.completed ? 'task-completed' : ''}`}
+            className={`task-item ${task.completed ? 'task-completed' : ''} ${hoveredTaskId ? 'drop-target' : ''}`}
             style={{
                 opacity: isDragging ? 0.5 : 1,
                 cursor: "grab",

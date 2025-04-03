@@ -6,7 +6,6 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import { SignedIn } from '@clerk/clerk-react';
 import { ToastContainer } from 'react-toastify'
 import { StoreContext } from './Context/StoreContext';
-import InsightsPage from './pages/Insights/InsightsPage';
 
 const App = () => {
 
@@ -23,19 +22,10 @@ const App = () => {
       <Routes>
         <Route path='/' element={<LandingPage />}></Route>
         <Route
-          path='/dashboard'
+          path='/dashboard/*'
           element={
             <SignedIn>
               <Dashboard />
-            </SignedIn>
-          }
-        >
-        </Route>
-        <Route
-          path='/insights'
-          element={
-            <SignedIn>
-              <InsightsPage />
             </SignedIn>
           }
         >

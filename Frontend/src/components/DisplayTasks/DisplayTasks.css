@@ -14,6 +14,10 @@
     transition: background-color 0.3s;
 }
 
+.tasks-active-header{
+    margin-bottom: 10px;
+}
+
 .task-item:hover {
     background-color: rgba(205, 220, 57, 0.1);
 }
