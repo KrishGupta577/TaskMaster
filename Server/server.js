@@ -17,7 +17,7 @@ connectDB()
 app.use('/api/task', taskRouter)
 
 app.get('/', (req, res) => {
-    res.send("Welcome to the Finance Tracker")
+    res.send("Welcome to the TaskMaster.")
 })
 
 app.listen(PORT, () => {
