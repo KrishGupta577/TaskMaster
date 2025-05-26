@@ -17,8 +17,6 @@ const Dashboard = () => {
   const location = useLocation();
   const [showAddTask, setShowAddTask] = useState(false);
 
-  console.log(user.id);
-
   if (!isSignedIn) {
     navigate("/");
     return <p>Loading...</p>;
