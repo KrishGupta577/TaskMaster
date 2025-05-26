@@ -8,7 +8,7 @@ const StoreContextProvider = (props) => {
 
   const { getToken } = useAuth()
   const [colorTheme, setColorTheme] = useState('dark')
-  const url = 'https://taskmaster-yjpb.onrender.com/api'
+  const url = 'https://task-master-ten-beta.vercel.app/api'
   const [tasks, setTasks] = useState([])
 
 
